@@ -1,0 +1,98 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(to right, rgb(1, 2, 8),rgb(6, 18, 58),rgb(20, 109, 145), rgb(11, 33, 104),rgb(6, 18, 58),rgb(1, 2, 8));
+}
+.cardnumber{
+  width: 50%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 30px;
+  background: rgb(6, 18, 58);
+  color: white;
+  margin-bottom: 5px;
+}
+.table{
+  width: 50%;
+  height: 80%;
+  font-weight: bold;
+    font-size: 50px;
+    background: white;
+}
+
+.B{
+  width: 20%;
+  color: white;
+  height: 80px;
+  background-image: linear-gradient(to right,blue,rgb(0, 162, 255));
+}
+.I{
+  color: white;
+  height: 80px;
+  background-image: linear-gradient(to right,rgb(64, 9, 78),rgb(124, 6, 89));
+  width: 20%;
+}
+.N{
+  color: white;
+  height: 80px;
+  background-image: linear-gradient(to right,rgb(7, 90, 39),rgb(6, 161, 115));
+  width: 20%;
+}
+.G{
+  color: white;
+  height: 80px;
+  background-image: linear-gradient(to right,rgb(71, 31, 5),rgb(201, 136, 17));
+  width: 20%;
+}
+.O{
+  color: white;
+  height: 80px;
+  background-image: linear-gradient(to right,rgb(22, 14, 8),rgb(163, 159, 152));
+  width: 20%;
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  background: rgb(6, 18, 58);
+  width: 50%;
+}
+.called {
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  
+  .winning {
+    background-color: blue;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  .good{
+    width: 24%;
+    height: 45px;
+    font-weight: bold;
+    font-size: 25px;
+    background: rgb(65, 23, 3);
+    color: white;
+    cursor: pointer;
+  }
+  .add{
+    width: 24%;
+    height: 45px;
+    font-weight: bold;
+    font-size: 25px;
+    background: rgb(6, 209, 148);
+    color: white;
+    cursor: pointer;
+  }
