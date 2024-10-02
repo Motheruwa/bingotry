@@ -253,7 +253,7 @@ return () => clearTimeout(timeout);
         </div>
       
       <div className={styles.img}>
-        <img src={Bingocard}/>
+        <img src={Bingocard} alt='no'/>
       </div>
       {/* Display the five most recently called numbers */}
       <div className={styles.recentCalledNumbers}>
