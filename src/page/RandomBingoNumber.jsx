@@ -68,6 +68,7 @@ function RandomBingoNumber() {
         generateRandomBingoNumber();
       }, 3000);
     }
+    
 
     return () => {
       clearInterval(interval);
@@ -87,7 +88,7 @@ function RandomBingoNumber() {
       setCardNumber(cardNumberInput);
   
       // Use a switch statement to navigate to the corresponding Card component based on the card number
-      switch (cardNumberInput) {
+      switch (cardNumber) {
         case '1':
           navigate(`/card1?cardNumber=${cardNumberInput}&calledNumbers=${JSON.stringify([...calledNumbers])}`);
           break;
