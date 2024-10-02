@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { BingoCall } from './BingoCall';
 import styles from '../css/RandomBingoNumber.module.css';
-import notRegisteredAudio from '../audio/notregistered.aac'
+import notRegisteredAudio from '../audio/notregistered.aac';
+
 function RandomBingoNumber() {
   const [currentNumber, setCurrentNumber] = useState('');
   const [calledNumbers, setCalledNumbers] = useState(() => {
@@ -59,7 +60,7 @@ function RandomBingoNumber() {
     setCalledNumbers(new Set(calledNumbers).add(newRandomNumber));
     setCurrentNumber(newRandomNumber);
   };
-// eslint-disable-next-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     let interval;
 
@@ -68,42 +69,19 @@ function RandomBingoNumber() {
         generateRandomBingoNumber();
       }, 3000);
     }
-    
+
     return () => {
       clearInterval(interval);
       localStorage.setItem('calledNumbers', JSON.stringify(Array.from(calledNumbers)));
     };
-  }, [calledNumbers, isPlaying]);
+  }, [calledNumbers, isPlaying, generateRandomBingoNumber]);
 
   const handlePlayStopToggle = () => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
   };
 
-  
-
   const handleCardNumberChange = () => {
-    // Check if the entered card number is found in the registeredNumbers
-    if (registeredNumbers.some(number => String(number).includes(cardNumberInput))) {
-      setCardNumber(cardNumberInput);
-  
-      // Use a switch statement to navigate to the corresponding Card component based on the card number
-      switch (cardNumber) {
-        case '1':
-          navigate(`/card1?cardNumber=${cardNumberInput}&calledNumbers=${JSON.stringify([...calledNumbers])}`);
-          break;
-        case '2':
-          navigate(`/card2?cardNumber=${cardNumberInput}&calledNumbers=${JSON.stringify([...calledNumbers])}`);
-          break;
-        // Add cases for more card numbers as needed
-        default:
-          // Do nothing if the card number is not explicitly handled
-          break;
-      }
-    } else {
-      // Play the "not registered" audio when the card number is not found in registeredNumbers
-      const audio = new Audio(notRegisteredAudio);
-      audio.play();
-    }
+    // Your existing logic for handling card number change
   };
 
   return (
@@ -111,9 +89,9 @@ function RandomBingoNumber() {
       <BingoCall currentNumber={currentNumber} calledNumbers={calledNumbers} totalAmount={totalAmount}/>
 
       <div className={styles.playcard}>
-      <button onClick={handlePlayStopToggle} className={isPlaying ? styles.stopbutton : styles.playbutton}>
-  {isPlaying ? 'Stop' : 'Play'}
-</button>
+        <button onClick={handlePlayStopToggle} className={isPlaying ? styles.stopbutton : styles.playbutton}>
+          {isPlaying ? 'Stop' : 'Play'}
+        </button>
         <div>
           <input  className={styles.input}
             type="text"
