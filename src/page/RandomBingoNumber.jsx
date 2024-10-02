@@ -59,7 +59,7 @@ function RandomBingoNumber() {
     setCalledNumbers(new Set(calledNumbers).add(newRandomNumber));
     setCurrentNumber(newRandomNumber);
   };
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let interval;
 
@@ -69,7 +69,6 @@ function RandomBingoNumber() {
       }, 3000);
     }
     
-
     return () => {
       clearInterval(interval);
       localStorage.setItem('calledNumbers', JSON.stringify(Array.from(calledNumbers)));
