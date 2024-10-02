@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { BingoCall } from './BingoCall';
 import styles from '../css/RandomBingoNumber.module.css';
-import notRegisteredAudio from '../audio/notregistered.aac'
+import notRegisteredAudio from '../audio/notregistered.aac';
+
 function RandomBingoNumber() {
   const [currentNumber, setCurrentNumber] = useState('');
   const [calledNumbers, setCalledNumbers] = useState(() => {
@@ -41,7 +42,7 @@ function RandomBingoNumber() {
         return '';
     }
   };
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateRandomBingoNumber = () => {
     const letters = ['B', 'I', 'N', 'G', 'O'];
     let newRandomNumber = '';
@@ -73,7 +74,7 @@ function RandomBingoNumber() {
       clearInterval(interval);
       localStorage.setItem('calledNumbers', JSON.stringify(Array.from(calledNumbers)));
     };
-  }, [calledNumbers, isPlaying, generateRandomBingoNumber]);
+  }, [calledNumbers, isPlaying]);
 
   const handlePlayStopToggle = () => {
     setIsPlaying((prevIsPlaying) => !prevIsPlaying);
@@ -107,14 +108,14 @@ function RandomBingoNumber() {
 
   return (
     <div className={styles.randombingonumber}>
-      <BingoCall currentNumber={currentNumber} calledNumbers={calledNumbers} totalAmount={totalAmount}/>
+      <BingoCall currentNumber={currentNumber} calledNumbers={calledNumbers} totalAmount={totalAmount} />
 
       <div className={styles.playcard}>
         <button onClick={handlePlayStopToggle} className={isPlaying ? styles.stopbutton : styles.playbutton}>
           {isPlaying ? 'Stop' : 'Play'}
         </button>
         <div>
-          <input  className={styles.input}
+          <input className={styles.input}
             type="text"
             value={cardNumberInput}
             onChange={(e) => setCardNumberInput(e.target.value)}
