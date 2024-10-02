@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { BingoCall } from './BingoCall';
 import styles from '../css/RandomBingoNumber.module.css';
-import notRegisteredAudio from '../audio/notregistered.aac';
-
+import notRegisteredAudio from '../audio/notregistered.aac'
 function RandomBingoNumber() {
   const [currentNumber, setCurrentNumber] = useState('');
   const [calledNumbers, setCalledNumbers] = useState(() => {
@@ -81,8 +80,30 @@ function RandomBingoNumber() {
   };
 
   const handleCardNumberChange = () => {
-    // Your existing logic for handling card number change
-  };
+    // Check if the entered card number is found in the registeredNumbers
+    if (registeredNumbers.some(number => String(number).includes(cardNumberInput))) {
+    setCardNumber(cardNumberInput);
+    
+    
+      // Use a switch statement to navigate to the corresponding Card component based on the card number
+      switch (cardNumber) {
+        case '1':
+          navigate(`/card1?cardNumber=${cardNumberInput}&calledNumbers=${JSON.stringify([...calledNumbers])}`);
+          break;
+        case '2':
+          navigate(`/card2?cardNumber=${cardNumberInput}&calledNumbers=${JSON.stringify([...calledNumbers])}`);
+          break;
+        // Add cases for more card numbers as needed
+        default:
+          // Do nothing if the card number is not explicitly handled
+          break;
+      }
+    } else {
+      // Play the "not registered" audio when the card number is not found in registeredNumbers
+      const audio = new Audio(notRegisteredAudio);
+      audio.play();
+    }
+    };
 
   return (
     <div className={styles.randombingonumber}>
