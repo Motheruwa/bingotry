@@ -74,6 +74,7 @@ function RandomBingoNumber() {
       clearInterval(interval);
       localStorage.setItem('calledNumbers', JSON.stringify(Array.from(calledNumbers)));
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calledNumbers, isPlaying]);
 
   const handlePlayStopToggle = () => {
